@@ -1,33 +1,63 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
 import './App.css'
+import Organizer from "./Organizer.tsx";
+import type {SyntheticEvent} from "react";
+
+function handleSubmit(event: SyntheticEvent<HTMLFormElement>) {
+  event.preventDefault();
+  console.log(event.currentTarget); //
+}
 
 function App() {
-  const [count, setCount] = useState(0)
-
   return (
     <>
-      <div>
-        <a href="https://vite.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.tsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
+        <Organizer>
+          <form onSubmit={handleSubmit}>
+            <input
+            type="text"
+            name="nazwa"
+            placeholder="Wpisz swoje imie"/>
+            <br/>
+            <select name="boat" id="boat">
+              <option value="none"/>
+              <option value="boat">Łódka</option>
+              <option value="omega">Omega</option>
+            </select>
+            <br/>
+            <label>
+              Godziny
+            <input
+            type="range"
+            name="hours"
+            />
+            </label>
+            <br/>
+            <label>
+              <input
+              type="checkbox"
+              name="extras"
+              checked={false}/>
+              Extra
+            </label>
+            <br/>
+            <label>
+            <input
+            type="radio"
+            name="payment"
+            value="paypal"/>
+              PayPal
+            </label>
+            <br/>
+            <label>
+              <input
+                  type="radio"
+                  name="payment"
+                  value="blik"/>
+              Blik
+            </label>
+            <br/>
+            <button type="submit">Submit</button>
+          </form>
+        </Organizer>
     </>
   )
 }
