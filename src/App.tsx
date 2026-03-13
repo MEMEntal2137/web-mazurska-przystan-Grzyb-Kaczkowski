@@ -4,7 +4,11 @@ import type {SyntheticEvent} from "react";
 
 function handleSubmit(event: SyntheticEvent<HTMLFormElement>) {
   event.preventDefault();
-  console.log(event.currentTarget); //
+  //co się stanie jak zasubmitujesz?
+}
+
+function handleRangeChange() {
+//co się stanie jak przesuniesz suwak?
 }
 
 function App() {
@@ -19,8 +23,9 @@ function App() {
             <br/>
             <select name="boat" id="boat">
               <option value="none"/>
-              <option value="boat">Łódka</option>
-              <option value="omega">Omega</option>
+              <option value="boat">Kajak(20zł/h)</option>
+              <option value="rower">Rower wodny(35zł/h)</option>
+              <option value="omega">Omega(150zł/h)</option>
             </select>
             <br/>
             <label>
@@ -28,22 +33,35 @@ function App() {
             <input
             type="range"
             name="hours"
+            onChange={handleRangeChange}
+            step="1"
+            max="8"
+            min="1"
             />
             </label>
             <br/>
             <label>
               <input
               type="checkbox"
-              name="extras"
-              checked={false}/>
-              Extra
+              name="kapok"
+              />
+              kapok(5zł)
+            </label>
+            <br/>
+            <label>
+              <input
+                  type="checkbox"
+                  name="kurs"
+              />
+              instruktor(50zł/h)
             </label>
             <br/>
             <label>
             <input
             type="radio"
             name="payment"
-            value="paypal"/>
+            value="paypal"
+            />
               PayPal
             </label>
             <br/>
@@ -55,8 +73,10 @@ function App() {
               Blik
             </label>
             <br/>
-            <button type="submit">Submit</button>
+            <button type="submit">Rezerwuję</button>
           </form>
+          <br/>
+          <h2>Cena:</h2>
         </Organizer>
     </>
   )
