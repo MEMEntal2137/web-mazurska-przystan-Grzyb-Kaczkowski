@@ -5,11 +5,8 @@ interface OrganizerProps{
 
 const Organizer: React.FC<OrganizerProps> = ({ children }) => {
     return (
-        <div>
-        <img src='assets/background.jpg' style={{width:'100%', height:'100%'}} alt="łodzie"/>
-        <div style={{maxHeight: "100vh", maxWidth: "100%", flexWrap: "wrap"}}>
+        <div style={{width:"100%",height:"100%", display:"flex", flexDirection:"row"}}>
             {children}
-        </div>
         </div>
     )
 }

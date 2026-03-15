@@ -18,18 +18,18 @@ function App() {
           <form onSubmit={handleSubmit}>
             <input
             type="text"
-            name="nazwa"
+            id="nazwa"
             placeholder="Wpisz swoje imie"/>
             <br/>
             <select name="boat" id="boat">
-              <option value="none"/>
+              <option value="none">Wypożyczany transport</option>
               <option value="boat">Kajak(20zł/h)</option>
               <option value="rower">Rower wodny(35zł/h)</option>
               <option value="omega">Omega(150zł/h)</option>
             </select>
             <br/>
-            <label>
-              Godziny
+            <label style={{display: "flex", flexDirection: "row"}}>
+              <p>Godziny</p>
             <input
             type="range"
             name="hours"
@@ -38,8 +38,9 @@ function App() {
             max="8"
             min="1"
             />
+              <p id="rangeId">1</p>
             </label>
-            <br/>
+
             <label>
               <input
               type="checkbox"
@@ -76,7 +77,7 @@ function App() {
             <button type="submit">Rezerwuję</button>
           </form>
           <br/>
-          <h2>Cena:</h2>
+          <h2 id="cena">Cena:</h2>
         </Organizer>
     </>
   )
