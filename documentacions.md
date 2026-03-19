@@ -1,3 +1,9 @@
+# 📄 Dokumentacja Techniczna – Projekt "Mazurska Przystań"
+
+**Zespół:** [Piotr Kaczkowski i Paweł Grzyb]
+**Klasa:** 3 Technikum
+**Data:** [20.03.2026]
+
 ## 1. Analiza wymagań klienta
 (Opisz własnymi słowami, jakie funkcjonalności musiały znaleźć się w aplikacji na podstawie e-maila od klienta).
 * liczenie ceny na podstawie wyborów życiowych klienta
