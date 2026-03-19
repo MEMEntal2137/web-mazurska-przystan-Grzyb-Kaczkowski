@@ -13,7 +13,7 @@ function App() {
 
   
 const [price, setPrice] = useState<number>(0);
-  function handleSubmit(e: SyntheticEvent<HTMLFormElement>) {
+    function handleSubmit(e: SyntheticEvent<HTMLFormElement>)
          {
             e.preventDefault();
 
@@ -45,6 +45,14 @@ const [price, setPrice] = useState<number>(0);
             if (kurs) total += 50 * range;
 
             setPrice(total);
+
+             alert(`Rezerwacja przyjęta!
+Cena: ${total} zł
+Godziny: ${range}
+Transport: ${boat}
+Kapok: ${kapok ? "tak" : "nie"}
+Instruktor: ${kurs ? "tak" : "nie"}`);
+        }
 
   return (
     <>
