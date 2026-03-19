@@ -1,18 +1,22 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
 import './App.css'
+import Organizer from "./Organizer.tsx";
+import {type ChangeEvent, type SyntheticEvent, useState} from "react";
+
+
+
 
 function App() {
-  const [range, setRange] = useState<number>(1);
+
+    const [name, setName] = useState<string>("");
+    const [range, setRange] = useState<number>(1);
+    const [price, setPrice] = useState<number>(0);
+    const [omegaAlertShown, setOmegaAlertShown] = useState<boolean>(false);
+
     function handleRangeChange(e: ChangeEvent<HTMLInputElement>) {
 
         setRange(Number(e.target.value));
     }
 
-
-  
-const [price, setPrice] = useState<number>(0);
     function handleSubmit(e: SyntheticEvent<HTMLFormElement>)
          {
             e.preventDefault();
@@ -54,17 +58,25 @@ Kapok: ${kapok ? "tak" : "nie"}
 Instruktor: ${kurs ? "tak" : "nie"}`);
         }
 
-  return (
-    <>
-    <Organizer>
-        <form onSubmit={handleSubmit}>
+    function handleBoatChange(e: ChangeEvent<HTMLSelectElement>) {
+        const value = e.target.value;
+        if (value === "omega" && !omegaAlertShown) {
+            alert("Statek Omega wymaga patentu!");
+            setOmegaAlertShown(true);
+        }
+    }
+    return (
+        <>
+            <Organizer>
+                <form onSubmit={handleSubmit}>
                     <input
                         type="text"
                         id="nazwa"
                         placeholder="Wpisz swoje imie"
                         value={name}
+                        onChange={(e) => setName(e.target.value)}/>
                     <br/>
-                    <select name="boat" id="boat">
+                    <select name="boat" id="boat" onChange={handleBoatChange}>
                         <option value="none">Wypożyczany transport</option>
                         <option value="boat">Kajak(20zł/h)</option>
                         <option value="rower">Rower wodny(35zł/h)</option>
@@ -118,15 +130,13 @@ Instruktor: ${kurs ? "tak" : "nie"}`);
                         Blik
                     </label>
                     <br/>
-            <button type="submit">Rezerwuję</button>
-          </form>
-          <br/>
-           <h2 id="cena">Cena: {price}</h2>
-        </Organizer>
-    </>
-
-      
-  )
+                    <button type="submit" disabled={name.trim() === ""}>Rezerwuję</button>
+                </form>
+                <br/>
+                <h2 id="cena">Cena: {price}</h2>
+            </Organizer>
+        </>
+    )
 }
 
 export default App
