@@ -120,7 +120,7 @@ Instruktor: ${kurs ? "tak" : "nie"}`);
             <button type="submit">Rezerwuję</button>
           </form>
           <br/>
-          <h2 id="cena">Cena:</h2>
+           <h2 id="cena">Cena: {price}</h2>
         </Organizer>
     </>
 
